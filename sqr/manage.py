@@ -19,3 +19,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# if __name__ == 'import_squirrel_data':
+#     import_squirrel_data()
+

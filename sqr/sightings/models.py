@@ -18,24 +18,26 @@ class Squirrel(models.Model):
 	Specific_Location = models.CharField(max_length=100)
 
 	TF_Choices = (
-		('TRUE','TRUE'),
-		('FALSE','FALSE'),
+		('true','TRUE'),
+		('false','FALSE'),
 	)
-	Running = models.CharField(max_length=5,choices=TF_Choices)
-	Chasing = models.CharField(max_length=5,choices=TF_Choices)
-	Climbing = models.CharField(max_length=5,choices=TF_Choices)
-	Eating = models.CharField(max_length=5,choices=TF_Choices)
-	Foraging = models.CharField(max_length=5,choices=TF_Choices)
+	Running = models.CharField(max_length=10,choices=TF_Choices)
+	Chasing = models.CharField(max_length=10,choices=TF_Choices)
+	Climbing = models.CharField(max_length=10,choices=TF_Choices)
+	Eating = models.CharField(max_length=10,choices=TF_Choices)
+	Foraging = models.CharField(max_length=10,choices=TF_Choices)
 
 
 	Other_Activities = models.CharField(max_length=100)
 	
-	Kuks = models.CharField(max_length=5,choices=TF_Choices)
-	Quaas = models.CharField(max_length=5,choices=TF_Choices)
-	Moans = models.CharField(max_length=5,choices=TF_Choices)
-	Tail_flags = models.CharField(max_length=5,choices=TF_Choices)
-	Tail_twitches = models.CharField(max_length=5,choices=TF_Choices)
-	Approaches = models.CharField(max_length=5,choices=TF_Choices)
-	Indifferent = models.CharField(max_length=5,choices=TF_Choices)
-	Runs_from = models.CharField(max_length=5,choices=TF_Choices)
+	Kuks = models.CharField(max_length=10,choices=TF_Choices)
+	Quaas = models.CharField(max_length=10,choices=TF_Choices)
+	Moans = models.CharField(max_length=10,choices=TF_Choices)
+	Tail_flags = models.CharField(max_length=10,choices=TF_Choices)
+	Tail_twitches = models.CharField(max_length=10,choices=TF_Choices)
+	Approaches = models.CharField(max_length=10,choices=TF_Choices)
+	Indifferent = models.CharField(max_length=10,choices=TF_Choices)
+	Runs_from = models.CharField(max_length=10,choices=TF_Choices)
 	
+	def __str__(self):
+		return self.Unique_Squirrel_ID
