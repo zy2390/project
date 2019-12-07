@@ -6,20 +6,22 @@ from .models import Squirrel
 from .forms import SquirrelForm #Build a Form
 
 def index(request):
-	return HttpResponse(b'sightings views index')
+	sightings = Squirrel.objects.all()
+	context={'sightings':sightings}
+	return render(request, 'sightings/index.html',context)
 
-def all_sqrs(request):
-	squirrels = Squirrel.objects.all()
-	context={
-		'squirrels':squirrels,
-	}
-	return render(request, 'sightings/all.html', context)
+# def all_sqrs(request):
+# 	squirrels = Squirrel.objects.all()
+# 	context={
+# 		'squirrels':squirrels,
+# 	}
+# 	return render(request, 'sightings/all.html', context)
 
-def sqr_coordinate(request, sqr_id):
-	sqr = Squirrel.objects.get(Unique_Squirrel_ID=sqr_id)
-	return HttpResponse(f'{sqr.Latitude,sqr.Longitude}')
+# def sqr_coordinate(request, sqr_id):
+# 	sqr = Squirrel.objects.get(Unique_Squirrel_ID=sqr_id)
+# 	return HttpResponse(f'{sqr.Latitude,sqr.Longitude}')
 
-def edit_sqr(request, sqr_id):
+def update(request,sqr_id):
 	sqr = Squirrel.objects.get(Unique_Squirrel_ID=sqr_id)
 	if request.method =='POST':
 		form = SquirrelForm(request.POST, instance=sqr)
@@ -32,9 +34,9 @@ def edit_sqr(request, sqr_id):
 	context={
 		'form':form,
 	}
-	return render(request, 'sightings/edit.html',context)
+	return render(request, 'sightings/update.html',context)
 
-def add_pet(request):
+def add(request):
 	if request.method == 'POST':
 		form = SquirrelForm(request.POST)
 		if form.is_valid():
@@ -46,4 +48,4 @@ def add_pet(request):
 	context={
 		'form':form,
 	}
-	return render(request, 'sightings/edit.html', context)
+	return render(request, 'sightings/add.html', context)

@@ -4,7 +4,7 @@ from sightings.models import Squirrel
 # from sightings.forms import SquirrelForm #Build a Form
 
 def index(request):
-	sightings = Squirrel.objects.order_by('?')[0:100]
+	sightings = Squirrel.objects.order_by('?')[0:99]
 	context={'sightings':sightings}
 	return render(request, 'map/map.html',context)
 
