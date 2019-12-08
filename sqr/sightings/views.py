@@ -9,25 +9,14 @@ def index(request):
 	sightings = Squirrel.objects.all()
 	context={'sightings':sightings}
 	return render(request, 'sightings/index.html',context)
-
-# def all_sqrs(request):
-# 	squirrels = Squirrel.objects.all()
-# 	context={
-# 		'squirrels':squirrels,
-# 	}
-# 	return render(request, 'sightings/all.html', context)
-
-# def sqr_coordinate(request, sqr_id):
-# 	sqr = Squirrel.objects.get(Unique_Squirrel_ID=sqr_id)
-# 	return HttpResponse(f'{sqr.Latitude,sqr.Longitude}')
-
+	
 def update(request,sqr_id):
 	sqr = Squirrel.objects.get(Unique_Squirrel_ID=sqr_id)
 	if request.method =='POST':
 		form = SquirrelForm(request.POST, instance=sqr)
 		if form.is_valid():
 			form.save()
-			return redirect(f'/sightings/{sqr_id}')
+			return redirect(f'/sightings/')
 	else:
 		form = SquirrelForm(instance=sqr)
 
@@ -41,7 +30,7 @@ def add(request):
 		form = SquirrelForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect(f'/sightings/list')
+			return redirect(f'/sightings/')
 	else:
 		form = SquirrelForm
 
@@ -49,3 +38,25 @@ def add(request):
 		'form':form,
 	}
 	return render(request, 'sightings/add.html', context)
+
+
+# def all_sqrs(request):
+# 	squirrels = Squirrel.objects.all()
+# 	context={
+# 		'squirrels':squirrels,
+# 	}
+# 	return render(request, 'sightings/all.html', context)
+
+# def sqr_coordinate(request, sqr_id):
+# 	sqr = Squirrel.objects.get(Unique_Squirrel_ID=sqr_id)
+# 	return HttpResponse(f'{sqr.Latitude,sqr.Longitude}')
+
+# def stats(request):
+# 	sightings = Squirrel.objects.all()
+	
+
+
+
+	
+# 	context={'sightings':sightings}
+# 	return render(request, 'sightings/stat.html',context)

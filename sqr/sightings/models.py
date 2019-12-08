@@ -12,14 +12,24 @@ class Squirrel(models.Model):
 	)
 	Shift = models.CharField(max_length=2, choices=Shift_Choices)
 	Date = models.IntegerField()
-	Age = models.CharField(max_length=10)
-	Primary_Fur_Color = models.CharField(max_length=30)
-	Location = models.CharField(max_length=30)
-	Specific_Location = models.CharField(max_length=100)
+
+	Age_Choices = (
+		('', '----'),
+		('Adult','Adult'),
+		('Juvenile','Juvenile'),
+		('?','Unknown')
+	)
+	Age = models.CharField(max_length=10, choices=Age_Choices, blank=True)
+
+
+	Primary_Fur_Color = models.CharField(max_length=30, blank=True)
+	Location = models.CharField(max_length=30, blank=True)
+	Specific_Location = models.CharField(max_length=100, blank=True)
 
 	TF_Choices = (
-		('true','TRUE'),
-		('false','FALSE'),
+		# ('', '----'),
+		('true','True'),
+		('false','False'),
 	)
 	Running = models.CharField(max_length=10,choices=TF_Choices)
 	Chasing = models.CharField(max_length=10,choices=TF_Choices)
@@ -28,7 +38,7 @@ class Squirrel(models.Model):
 	Foraging = models.CharField(max_length=10,choices=TF_Choices)
 
 
-	Other_Activities = models.CharField(max_length=100)
+	Other_Activities = models.CharField(max_length=100, blank=True)
 	
 	Kuks = models.CharField(max_length=10,choices=TF_Choices)
 	Quaas = models.CharField(max_length=10,choices=TF_Choices)
